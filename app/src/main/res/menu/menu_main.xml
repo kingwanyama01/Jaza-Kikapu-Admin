@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.king.mystorageapp.MainActivity">
+    <item
+        android:title="Deposits"
+        android:id="@+id/action_deposits"
+        android:icon="@mipmap/viewrecords"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_copy_account"
+        android:orderInCategory="100"
+        android:title="Copy account number"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="101"
+        android:title="@string/action_logout"
+        app:showAsAction="never" />
+</menu>
