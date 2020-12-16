@@ -10,41 +10,22 @@
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/header_register"
         android:theme="@style/ToolbarTheme"
-        android:elevation="5dp" />
+        android:elevation="15dp" />
 
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/gd"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
         android:transitionName="tvLogin"
         android:text="Products"
-        android:textColor="@color/colorWhite"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/circle1"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
-        android:layout_below="@+id/bgHeader"
-        android:layout_marginLeft="-25dp"
-        android:layout_marginTop="-5dp"
-        android:src="@drawable/circletransparant" />
-
-    <ImageView
-        android:id="@+id/circle3"
-        android:layout_width="182dp"
-        android:layout_height="182dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginBottom="-30dp"
-        android:src="@drawable/circle" />
 
 
     <ScrollView
