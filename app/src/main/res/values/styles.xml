@@ -26,7 +26,7 @@
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="colorControlNormal">#ffffff</item>
     </style>
 
     <style name="AppTheme.FullScreen.NoActionBar">

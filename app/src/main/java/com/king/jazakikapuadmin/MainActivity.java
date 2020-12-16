@@ -25,12 +25,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btRegister;
-    private TextView tvLogin,mTvForgotPassword;
+    private TextView tvRegister,mTvForgotPassword;
     EditText mEdtMail,mEdtPass;
-    Button mBtnLogin;
+    Button mBtnLogin,btRegister;
     String alert_message;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
@@ -41,13 +40,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btRegister  = findViewById(R.id.btRegister);
-        tvLogin     = findViewById(R.id.tvLogin);
-        btRegister.setOnClickListener(this);
+        btRegister  = findViewById(R.id.btn_login);
+        tvRegister = findViewById(R.id.tvRegister);
+//        btRegister.setOnClickListener(this);
         mEdtMail = findViewById(R.id.edt_mail);
         mEdtPass = findViewById(R.id.edt_password);
         mBtnLogin = findViewById(R.id.btn_login);
         mTvForgotPassword = findViewById(R.id.tvForgot);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null){
             finish();
-            Intent intent = new Intent(getApplicationContext(), AddproductsActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ProductAdd.class);
             startActivity(intent);
         }
 
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             progressDialog.dismiss();
                             if (task.isSuccessful()){
 
-                                startActivity(new Intent(getApplicationContext(), AddproductsActivity.class));
+                                startActivity(new Intent(getApplicationContext(), ProductAdd.class));
 
                             }else {
 
@@ -108,26 +108,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (v==mTvForgotPassword){
                     Intent intent   = new Intent(MainActivity.this,PasswordActivity.class);
                     Pair[] pairs    = new Pair[1];
-                    pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
+                    pairs[0] = new Pair<View,String>(tvRegister,"tvRegister");
                     ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
                     startActivity(intent,activityOptions.toBundle());
                 }
             }
         });
 
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                if (v==tvRegister){
+                    Intent intent   = new Intent(MainActivity.this,RegisterActivity.class);
+                    Pair[] pairs    = new Pair[1];
+                    pairs[0] = new Pair<View,String>(tvRegister,"tvRegister");
+                    ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                    startActivity(intent,activityOptions.toBundle());
+                }
+            }
+        });
+
+
+
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public void onClick(View v) {
-        if (v==btRegister){
-            Intent intent   = new Intent(MainActivity.this,RegisterActivity.class);
-            Pair[] pairs    = new Pair[1];
-            pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
-            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-            startActivity(intent,activityOptions.toBundle());
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    @Override
+//    public void onClick(View v) {
+//        if (v==btRegister){
+//            Intent intent   = new Intent(MainActivity.this,RegisterActivity.class);
+//            Pair[] pairs    = new Pair[1];
+//            pairs[0] = new Pair<View,String>(tvRegister,"tvRegister");
+//            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+//            startActivity(intent,activityOptions.toBundle());
+//        }
+//    }
+
     public void alert_message(String message){
         final SweetAlertDialog notify;
         notify = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);

@@ -10,7 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,12 +27,12 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private RelativeLayout rlayout;
+    private LinearLayout llayout;
     private Animation animation;
     SweetAlertDialog notify;
     String alert_message;
     EditText mEdtMail,mEdtPass,mEdtPassConfirm;
-    Button mBtnSignUp;
+    Button tvSignUp;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
 
@@ -42,11 +44,11 @@ public class RegisterActivity extends AppCompatActivity {
         mEdtMail = findViewById(R.id.edt_mail);
         mEdtPass = findViewById(R.id.edt_password);
         mEdtPassConfirm = findViewById(R.id.edt_password_confirm);
-        mBtnSignUp = findViewById(R.id.btn_signup);
+        tvSignUp = findViewById(R.id.btn_signup);
 
-        rlayout = findViewById(R.id.rlayout);
+        llayout = findViewById(R.id.llayout);
         animation = AnimationUtils.loadAnimation(this,R.anim.uptodowndiagonal);
-        rlayout.setAnimation(animation);
+        llayout.setAnimation(animation);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog  = new ProgressDialog(this);
@@ -54,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
 
-        mBtnSignUp.setOnClickListener(new View.OnClickListener() {
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email,password,password_confirm;
@@ -139,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     progressDialog.dismiss();
                                     if (task.isSuccessful()){
-                                       startActivity(new Intent(getApplicationContext(), AddproductsActivity.class));
+                                       startActivity(new Intent(getApplicationContext(), ProductAdd.class));
                                     }else {
                                         Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                                     }

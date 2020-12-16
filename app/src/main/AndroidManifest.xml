@@ -11,15 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.FullScreen"
         tools:replace="android:icon">
-        <activity
-            android:name=".ProductsActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DepositsTheme"></activity>
-        <activity android:name=".PasswordActivity" />
+        <activity android:name=".ProductAdd"></activity>
+        <activity android:name=".AddproductActivity" />
         <activity
             android:name=".AddproductsActivity"
             android:label="@string/title_activity_adddeposit"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProductsActivity"
+            android:label="@string/app_name"
+            android:theme="@style/DepositsTheme" />
+        <activity android:name=".PasswordActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.FullScreen" />

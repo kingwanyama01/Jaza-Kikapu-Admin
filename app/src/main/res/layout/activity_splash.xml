@@ -1,19 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/my_cart" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_marginTop="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_kikapu"
+                        app:tint="@color/orange_400" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="jaza\nkikapu polepole"
+                        android:textSize="23sp"
+                        android:textColor="@color/orange_400"
+                        app:fontFamily="san-serif"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="80dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:background="@color/orange_400" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_marginTop="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your gateway to ultimate saving."
+                    android:textColor="#3b3b3b"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="120dp"
+            android:background="#A3979797"/>
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:background="@drawable/gd"
+                        android:layout_width="85dp"
+                        android:layout_height="33dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center"
+                        android:text="Initializing"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="wait a moment..."
+                        android:textSize="12sp"
+                        android:textColor="#a9a9b0"/>
+
+                    <com.agrawalsuneet.dotsloader.loaders.LazyLoader
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/myLoaderProgress"
+                        android:layout_margin="20dp"
+                        android:layout_marginTop="10dp"
+                        app:lazyloader_animDur="400"
+                        app:lazyloader_dotsDist="10dp"
+                        app:lazyloader_dotsRadius="3dp"
+                        app:lazyloader_firstDelayDur="150"
+                        app:lazyloader_firstDotColor="@color/orange_200"
+                        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+                        app:lazyloader_secondDelayDur="300"
+                        app:lazyloader_secondDotColor="@color/orange_400"
+                        app:lazyloader_thirdDotColor="@color/orange_600" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="200dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Copyright &#169; Paramount Top-Tiers ltd"
+                    android:textSize="12sp"
+                    android:textColor="#118df0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

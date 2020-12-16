@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class PasswordActivity extends AppCompatActivity {
 
-    private RelativeLayout rlayout;
+    private LinearLayout llayout;
     private Animation animation;
     SweetAlertDialog notify;
     String alert_message;
@@ -49,9 +50,9 @@ public class PasswordActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        rlayout = findViewById(R.id.rlayout);
+        llayout = findViewById(R.id.llayout);
         animation = AnimationUtils.loadAnimation(this,R.anim.uptodowndiagonal);
-        rlayout.setAnimation(animation);
+        llayout.setAnimation(animation);
 
 
 
