@@ -1,11 +1,12 @@
 package com.king.jazakikapuadmin;
 
 public class Upload {
-    private String deposit_type,amount,image_url,depositing_email,date, key;
+    private String name,amount,description,image_url,depositing_email,date, key;
 
-    public Upload(String deposit_type, String amount, String image_url, String depositing_email, String date, String key) {
-        this.deposit_type = deposit_type;
+    public Upload(String name, String amount, String description, String image_url, String depositing_email, String date, String key) {
+        this.name = name;
         this.amount = amount;
+        this.description = description;
         this.image_url = image_url;
         this.depositing_email = depositing_email;
         this.date = date;
@@ -15,12 +16,12 @@ public class Upload {
     public Upload() {
     }
 
-    public String getDeposit_type() {
-        return deposit_type;
+    public String getName() {
+        return name;
     }
 
-    public void setDeposit_type(String deposit_type) {
-        this.deposit_type = deposit_type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAmount() {
@@ -29,6 +30,14 @@ public class Upload {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImage_url() {

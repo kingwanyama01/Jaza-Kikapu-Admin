@@ -37,9 +37,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
         Upload uploadCurrent = mUploads.get(position);
-        holder.mTvDepositTypeAndAmount.setText(uploadCurrent.getDeposit_type()+" | Ksh "+uploadCurrent.getAmount());
+        holder.mTvDepositTypeAndAmount.setText(uploadCurrent.getName()+" | Ksh "+uploadCurrent.getAmount());
         holder.mTvDate.setText("Date | "+uploadCurrent.getDate());
         holder.mTvEmail.setText("By | "+uploadCurrent.getDepositing_email());
+        holder.mTvDesc.setText(uploadCurrent.getDescription());
         Glide.with(mContext).load(uploadCurrent.getImage_url()).placeholder(R.mipmap.defaultimg)
                 .centerInside().into(holder.imageView);
     }
@@ -51,13 +52,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
 
     public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        public TextView mTvDepositTypeAndAmount,mTvEmail,mTvDate;
+        public TextView mTvDepositTypeAndAmount,mTvEmail,mTvDate,mTvDesc;
         public ImageView imageView;
         public ImageViewHolder(View itemView) {
             super(itemView);
             mTvDepositTypeAndAmount = itemView.findViewById(R.id.tv_deposit_type_and_amount);
             mTvEmail = itemView.findViewById(R.id.tv_email);
             mTvDate = itemView.findViewById(R.id.tv_date);
+            mTvDesc = itemView.findViewById(R.id.tv_desc);
             imageView = itemView.findViewById(R.id.imageView);
 
             itemView.setOnClickListener(this);

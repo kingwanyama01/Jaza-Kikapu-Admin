@@ -47,7 +47,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private Button mBtnSave;
-    private EditText mEdtAmount;
+    private EditText mEdtAmount,mEdtName, mEdtDesc;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
@@ -55,8 +55,7 @@ public class AddProductActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private StorageTask mUploadTask;
     private FirebaseAuth firebaseAuth;
-    String mDepositType,mAmount,mDownloadUrl,alert_message,mFirebaseUserEmail,mDateTime;
-    Spinner mSpinnerDepositType;
+    String mDepositType,mAmount,mName,mDescription,mDownloadUrl,alert_message,mFirebaseUserEmail,mDateTime;
     SweetAlertDialog pDialog;
     DateFormat dateFormat;
     Date mDate;
@@ -83,19 +82,9 @@ public class AddProductActivity extends AppCompatActivity {
         mDate = new Date();
         mDateTime = dateFormat.format(mDate);
 
-        mSpinnerDepositType = findViewById(R.id.spinner_deposit_options);
         mEdtAmount = findViewById(R.id.edt_amount);
-        mSpinnerDepositType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mDepositType = parent.getItemAtPosition(position).toString().trim();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mDepositType = "Select type";
-            }
-        });
+        mEdtName = findViewById(R.id.edt_name);
+        mEdtDesc = findViewById(R.id.edt_description);
 
         mBtnSave = findViewById(R.id.btn_save);
         mEdtAmount = findViewById(R.id.edt_amount);
@@ -170,13 +159,23 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void uploadFile(){
         mAmount = mEdtAmount.getText().toString().trim();
-        if (mDepositType.equals("Select type")){
-            alert_message = "Please Select type";
+        mName = mEdtName.getText().toString().trim();
+        mDescription = mEdtDesc.getText().toString().trim();
+        if (mName.isEmpty()){
+            alert_message = "Please enter name ";
             alert_message(alert_message);
+            mEdtName.setError("Please enter name");
+            mEdtName.requestFocus();
         }else if (mAmount.isEmpty()){
             alert_message = "Please enter amount "+mAmount;
             alert_message(alert_message);
             mEdtAmount.setError("Please enter amount");
+            mEdtAmount.requestFocus();
+        }else  if (mDescription.isEmpty()){
+            alert_message = "Please enter description ";
+            alert_message(alert_message);
+            mEdtDesc.setError("Please enter description");
+            mEdtDesc.requestFocus();
         }else {
             if (mImageUri !=null){
                 StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
@@ -209,7 +208,7 @@ public class AddProductActivity extends AppCompatActivity {
                         mEdtAmount.setText("");
                         Glide.with(AddProductActivity.this).load(R.mipmap.defaultimg).into(mImageView);
                         mDownloadUrl = taskSnapshot.getDownloadUrl().toString();
-                        Upload upload = new Upload(mDepositType,mAmount,mDownloadUrl,mFirebaseUserEmail,mDateTime,""+System.currentTimeMillis());
+                        Upload upload = new Upload(mName,mAmount,mDescription,mDownloadUrl,mFirebaseUserEmail,mDateTime,""+System.currentTimeMillis());
                         String uploadId = mDatabaseRef.push().getKey();
                         mDatabaseRef.child(System.currentTimeMillis()+"").setValue(upload);
                     }

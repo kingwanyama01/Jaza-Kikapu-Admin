@@ -48,6 +48,15 @@
                 android:layout_marginRight="10dp"
                 android:src="@mipmap/defaultimg"/>
             <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Abc"
+                android:textColor="@color/orange_400"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <TextView
                 android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
