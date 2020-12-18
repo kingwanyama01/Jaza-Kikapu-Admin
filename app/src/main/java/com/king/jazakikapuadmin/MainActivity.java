@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null){
             finish();
-            Intent intent = new Intent(getApplicationContext(), ProductAdd.class);
+            Intent intent = new Intent(getApplicationContext(), AddProductActivity.class);
             startActivity(intent);
         }
 
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             if (task.isSuccessful()){
 
-                                startActivity(new Intent(getApplicationContext(), ProductAdd.class));
+                                startActivity(new Intent(getApplicationContext(), AddProductActivity.class));
+                                finish();
 
                             }else {
 

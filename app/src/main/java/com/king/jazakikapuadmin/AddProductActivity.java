@@ -1,12 +1,28 @@
 package com.king.jazakikapuadmin;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,30 +37,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.webkit.MimeTypeMap;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-class ProductAdd extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity {
+
     private static final int PICK_IMAGE_REQUEST = 1;
     private Button mBtnSave;
     private EditText mEdtAmount;
@@ -61,10 +61,12 @@ class ProductAdd extends AppCompatActivity {
     DateFormat dateFormat;
     Date mDate;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_add);
+        setContentView(R.layout.activity_add_product);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -205,7 +207,7 @@ class ProductAdd extends AppCompatActivity {
                         alert_message = "Saving successful";
                         alert_message(alert_message);
                         mEdtAmount.setText("");
-                        Glide.with(ProductAdd.this).load(R.mipmap.defaultimg).into(mImageView);
+                        Glide.with(AddProductActivity.this).load(R.mipmap.defaultimg).into(mImageView);
                         mDownloadUrl = taskSnapshot.getDownloadUrl().toString();
                         Upload upload = new Upload(mDepositType,mAmount,mDownloadUrl,mFirebaseUserEmail,mDateTime,""+System.currentTimeMillis());
                         String uploadId = mDatabaseRef.push().getKey();
@@ -215,7 +217,7 @@ class ProductAdd extends AppCompatActivity {
                     @Override
                     //Failure
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProductAdd.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -234,13 +236,13 @@ class ProductAdd extends AppCompatActivity {
     }
 
     private void openImagesActivity(){
-        Intent intent = new Intent(getApplicationContext(),ProductAdd.class);
+        Intent intent = new Intent(getApplicationContext(),AddProductActivity.class);
         startActivity(intent);
     }
 
     public void alert_message(String message){
         final SweetAlertDialog notify;
-        notify = new SweetAlertDialog(ProductAdd.this, SweetAlertDialog.WARNING_TYPE);
+        notify = new SweetAlertDialog(AddProductActivity.this, SweetAlertDialog.WARNING_TYPE);
         notify.setTitleText("ALERT!!!")
                 .setContentText(alert_message)
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

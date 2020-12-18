@@ -141,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     progressDialog.dismiss();
                                     if (task.isSuccessful()){
-                                       startActivity(new Intent(getApplicationContext(), ProductAdd.class));
+                                       startActivity(new Intent(getApplicationContext(), AddProductActivity.class));
                                     }else {
                                         Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                                     }

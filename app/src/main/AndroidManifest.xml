@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.FullScreen"
         tools:replace="android:icon">
-        <activity android:name=".ProductAdd"></activity>
+        <activity android:name=".AddProductActivity"></activity>
         <activity android:name=".AddproductActivity" />
         <activity
             android:name=".AddproductsActivity"
